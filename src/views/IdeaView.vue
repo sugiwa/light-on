@@ -1,7 +1,23 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
-const idea = ref("");
+const idea = ref<string>("");
+const ideaList = ref<Array<string>>([]);
+
+const isValid = computed<boolean>(() => {
+  return ideaList.value.length > 2;
+});
+
+const addIdea = () => {
+  console.log(idea.value);
+  if (idea.value !== "") {
+    ideaList.value.push(idea.value);
+    idea.value = "";
+  }
+};
+const searchIdea = () => {
+  console.log("searchIdea: ", ideaList);
+};
 </script>
 
 <template>
@@ -9,19 +25,30 @@ const idea = ref("");
     <div class="wrapper">
       <h2>Idea</h2>
 
-      <v-form>
-        <v-text-field v-model="idea" label="Idea"></v-text-field>
+      <v-form v-model="isValid" lazy-validation @keydown.enter.prevent>
+        <v-text-field
+          v-model="idea"
+          label="Idea"
+          @keydown.enter="addIdea"
+        ></v-text-field>
 
-        <v-btn color="success"> Search </v-btn>
+        <v-btn
+          color="success"
+          :disabled="!isValid"
+          @click="searchIdea"
+          style="margin-left: auto"
+        >
+          Search
+        </v-btn>
       </v-form>
     </div>
-    {{ idea }}
   </v-card>
 </template>
 
 <style>
 .card {
   width: 60%;
+  max-width: 500px;
   margin: 50px auto;
 }
 
