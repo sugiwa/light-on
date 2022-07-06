@@ -14,7 +14,7 @@ const toggleDrawer = () => {
 <template>
   <v-app>
     <v-app-bar app color="primary">
-      <v-btn fab @click="toggleDrawer">
+      <v-btn icon @click="toggleDrawer">
         <v-icon :icon="mdiMenu" />
       </v-btn>
 

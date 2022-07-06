@@ -9,14 +9,18 @@ const isValid = computed<boolean>(() => {
   return ideaList.value.length > 2;
 });
 
-const addIdea = () => {
+const addIdea = (): void => {
   console.log(idea.value);
   if (idea.value !== "") {
     ideaList.value.push(idea.value);
     idea.value = "";
   }
 };
-const searchIdea = () => {
+
+const deleteIdea = (index: number): void => {
+  ideaList.value.splice(index, 1);
+};
+const searchIdea = (): void => {
   console.log("searchIdea: ", ideaList);
 };
 </script>
@@ -43,7 +47,7 @@ const searchIdea = () => {
         </v-btn>
       </v-form>
 
-      <custom-list :items="ideaList"></custom-list>
+      <custom-list :items="ideaList" @delete="deleteIdea"></custom-list>
     </div>
   </v-card>
 </template>
