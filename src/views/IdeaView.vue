@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import CustomList from "@/components/CustomList.vue";
 
 const idea = ref<string>("");
 const ideaList = ref<Array<string>>([]);
@@ -41,6 +42,8 @@ const searchIdea = () => {
           Search
         </v-btn>
       </v-form>
+
+      <custom-list :items="ideaList"></custom-list>
     </div>
   </v-card>
 </template>
