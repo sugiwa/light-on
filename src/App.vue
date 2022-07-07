@@ -18,10 +18,12 @@ const toggleDrawer = () => {
         <v-icon :icon="mdiMenu" />
       </v-btn>
 
-      <v-btn>
-        <v-icon :icon="mdiAccount" />
-        <span>User</span>
-      </v-btn>
+      <router-link to="/sign_up" class="header-link">
+        <v-btn>
+          <v-icon :icon="mdiAccount" />
+          <span>User</span>
+        </v-btn>
+      </router-link>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary>
@@ -61,4 +63,9 @@ const toggleDrawer = () => {
   color: black;
   text-decoration: none;
 }
+.header-link {
+  color: white;
+  text-decoration: none;
+}
+
 </style>

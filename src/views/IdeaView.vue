@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import CustomList from "@/components/CustomList.vue";
+import CustomTextField from "@/components/CustomTextField.vue";
 
 const idea = ref<string>("");
 const ideaList = ref<Array<string>>([]);
@@ -31,11 +32,11 @@ const searchIdea = (): void => {
       <h2>Idea</h2>
 
       <v-form v-model="isValid" lazy-validation @keydown.enter.prevent>
-        <v-text-field
-          v-model="idea"
+        <custom-text-field
+          v-model:value="idea"
           label="Idea"
           @keydown.enter="addIdea"
-        ></v-text-field>
+        />
 
         <v-btn
           color="success"
