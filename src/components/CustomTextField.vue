@@ -4,6 +4,7 @@ import { computed } from "vue";
 interface Props {
   value: string;
   label: string;
+  rules: Array<any>;
 }
 const textProps = defineProps<Props>();
 
@@ -19,5 +20,9 @@ const textValue = computed<string>({
 </script>
 
 <template>
-  <v-text-field v-model="textValue" :label="textProps.label"> </v-text-field>
+  <v-text-field
+    v-model="textValue"
+    :label="textProps.label"
+    :rules="textProps.rules"
+  />
 </template>
