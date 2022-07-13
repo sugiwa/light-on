@@ -18,7 +18,7 @@ const toggleDrawer = () => {
         <v-icon :icon="mdiMenu" />
       </v-btn>
 
-      <router-link to="/sign_up" class="header-link">
+      <router-link to="/log_in" class="header-link">
         <v-btn>
           <v-icon :icon="mdiAccount" />
           <span>User</span>

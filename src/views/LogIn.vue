@@ -6,15 +6,8 @@ const isValid = computed<boolean>(() => {
   return false;
 });
 
-const emailRules = [
-  (v: string) => !!v || "Email is required",
-  (v: string) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-];
-const passwordRules = [
-  (v: string) => !!v || "Password is required",
-  (v: string) =>
-    (v && v.length > 4) || "Password must be more than 4 characters",
-];
+const emailRules = [(v: string) => !!v || "Email is required"];
+const passwordRules = [(v: string) => !!v || "Password is required"];
 
 const email = ref("");
 const password = ref("");
@@ -23,7 +16,7 @@ const password = ref("");
 <template>
   <v-card class="card">
     <div class="wrapper">
-      <h2>Sign up</h2>
+      <h2>Log in</h2>
 
       <v-form
         v-model="isValid"
@@ -48,11 +41,12 @@ const password = ref("");
           @click="() => {}"
           style="margin-left: auto"
         >
-          Sign up
+          Log in
         </v-btn>
       </v-form>
-      <router-link to="/log_in" class="link">
-        <p>Log in</p>
+
+      <router-link to="/sign_up" class="link">
+        <p>Sign up</p>
       </router-link>
     </div>
   </v-card>
